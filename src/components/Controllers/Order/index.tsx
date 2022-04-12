@@ -94,9 +94,6 @@ export function Order({ data }: Props) {
           <ListItem.Content>
 
             <TouchableOpacity onPress={() => {
-
-
-
               firestore()
                 .collection('orders')
                 .doc(data.id)
@@ -107,8 +104,6 @@ export function Order({ data }: Props) {
                 .catch((error) => console.log(error))
             }} >
               <Header>
-
-
 
                 <Title> {data.patrimony} </Title>
                 <MaterialIcons
@@ -129,7 +124,6 @@ export function Order({ data }: Props) {
                 <Info>
                   <MaterialIcons name="person" size={16} color={theme.COLORS.SUBTEXT} />
                   <Label  >
-
                     {data.responsavelEstoque}
                   </Label>
                 </Info>
@@ -142,15 +136,10 @@ export function Order({ data }: Props) {
                 </Info>
               </Footer>
             </TouchableOpacity>
-
-
-
           </ListItem.Content>
           <ListItem.Chevron />
         </ListItem.Swipeable>
-
-
-
+        
       </Content>
     </Container>
   );
