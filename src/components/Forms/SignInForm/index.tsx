@@ -22,7 +22,7 @@ export function SignInForm() {
     auth()
     .signInWithEmailAndPassword(email, password)
     .then(() => {
-      Alert.alert('Logado com sucesso!')
+      
     })
     .catch((error) => console.log(error))
     .finally(() => setIsLoading(false))

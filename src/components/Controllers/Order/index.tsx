@@ -27,11 +27,7 @@ import {
   Footer,
   OrderStyleProps
 } from './styles';
-import { Alert, /*Button*/ TouchableOpacity } from 'react-native';
-
-
-/* 
-              <Button title="Inserir movimentação" onPress={handleUpdateOrder} /> */
+import { TouchableOpacity } from 'react-native';
 
 export type OrderProps = OrderStyleProps & {
   id: string;
@@ -64,9 +60,6 @@ export function Order({ data }: Props) {
             <Button
               title="Fechar"
               onPress={() => {
-
-
-
                 firestore()
                   .collection('orders')
                   .doc(data.id)
@@ -84,9 +77,6 @@ export function Order({ data }: Props) {
             <Button
               title="Abrir"
               onPress={() => {
-
-
-
                 firestore()
                   .collection('orders')
                   .doc(data.id)
