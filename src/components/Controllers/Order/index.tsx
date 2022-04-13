@@ -93,16 +93,7 @@ export function Order({ data }: Props) {
         >
           <ListItem.Content>
 
-            <TouchableOpacity onPress={() => {
-              firestore()
-                .collection('orders')
-                .doc(data.id)
-                .update({
-                  status: 'closed',
-                  created_at: firestore.FieldValue.serverTimestamp()
-                })
-                .catch((error) => console.log(error))
-            }} >
+            <TouchableOpacity >
               <Header>
 
                 <Title> {data.patrimony} </Title>
