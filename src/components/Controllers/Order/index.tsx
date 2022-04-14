@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from 'styled-components/native';
 
@@ -29,6 +29,27 @@ import {
 } from './styles';
 import { TouchableOpacity } from 'react-native';
 
+import React from 'react';
+import { View } from 'react-native';
+import * as Print from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+
+const html = `
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  </head>
+  <body style="text-align: center;">
+    <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
+      Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
+    </h1>
+    <img
+      src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
+      style="width: 90vw;" />
+  </body>
+</html>
+`;
+
 export type OrderProps = OrderStyleProps & {
   id: string;
   patrimony: string;
@@ -48,8 +69,28 @@ type Props = {
 export function Order({ data }: Props) {
   const theme = useTheme();
 
+  const [selectedPrinter, setSelectedPrinter] = React.useState();
+
+  const print = async () => {
+    await Print.printAsync({
+      html,
+    });
+  }
+
+  const printToFile = async () => {
+    const { uri } = await Print.printToFileAsync({
+      html
+    });
+    console.log('O arquivo foi salvo em:', uri);
+    await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
+  }
+
   return (
     <Container>
+
+<Button title='Imprimir' onPress={print} />
+   
+   <Button title='Salvar PDF' onPress={printToFile} />
       <Status status={data.status} />
 
       <Content  >

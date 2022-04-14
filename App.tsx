@@ -1,8 +1,26 @@
-
-
 import 'react-native-gesture-handler';
 
 import React from 'react';
+import { View, StyleSheet, Button, Platform, Text } from 'react-native';
+import * as Print from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+
+const html = `
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  </head>
+  <body style="text-align: center;">
+    <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
+      Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
+    </h1>
+    <img
+      src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
+      style="width: 90vw;" />
+  </body>
+</html>
+`;
+
 import { StatusBar } from 'expo-status-bar';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components/native';
@@ -13,6 +31,26 @@ import { Routes } from './src/routes';
 import theme from './src/theme';
 
 export default function App() {
+
+
+  const [selectedPrinter, setSelectedPrinter] = React.useState();
+
+  const print = async () => {
+    await Print.printAsync({
+      html,
+    });
+  }
+
+  const printToFile = async () => {
+    const { uri } = await Print.printToFileAsync({
+      html
+    });
+    console.log('O arquivo foi salvo em:', uri);
+    await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
+  }
+
+
+
   const [fontsLoaded] = useFonts({
     Inter_700Bold,
     Inter_400Regular
@@ -27,10 +65,40 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <StatusBar style="dark" translucent backgroundColor="transparent" />
         <Routes />
+
+
+
+
+
+
+
       </ThemeProvider>
+
+
+
+
+
+
     </GestureHandlerRootView>
+
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+    flexDirection: 'column',
+    padding: 8,
+  },
+  spacer: {
+    height: 8
+  },
+  printer: {
+    textAlign: 'center',
+  }
+});
 
 
 
