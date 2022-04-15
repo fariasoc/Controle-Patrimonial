@@ -81,8 +81,18 @@ export function Order({ data }: Props) {
     <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
       Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
 
-      <h2> {data.patrimony} </h2>
+      <h2>
+      
+      ID: ${data.id} <br>
+      Equipamento: ${data.patrimony} <br>
+      Descrição ou Observações: ${data.description} <br>
+      ${data.lacre} <br>
+      ${data.responsavelEstoque} <br>
+      ${data.responsavelOperacao} <br>
+      ${data.status}<br>
+      ${data.created_at}<br>
 
+      </h2>
     </h1>
     <img
       src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
