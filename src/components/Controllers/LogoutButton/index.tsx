@@ -10,7 +10,7 @@ export function LogoutButton({ ...rest }: RectButtonProps) {
 
   return (
     <Container {...rest}>
-      <MaterialIcons name="logout" size={18} color={COLORS.WHITE} />
+      <MaterialIcons name="logout" size={20} color={COLORS.WHITE} />
     </Container>
   )
 }

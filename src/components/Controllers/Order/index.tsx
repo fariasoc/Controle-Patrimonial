@@ -34,25 +34,6 @@ import { View } from 'react-native';
 import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
 
-/*
-const html = `
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-  </head>
-  <body style="text-align: center;">
-    <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
-      Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
-    </h1>
-    <img
-      src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
-      style="width: 90vw;" />
-  </body>
-</html>
-`;
-
-*/
-
 export type OrderProps = OrderStyleProps & {
   id: string;
   patrimony: string;
@@ -78,22 +59,42 @@ export function Order({ data }: Props) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
   </head>
   <body style="text-align: center;">
-    <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
+
+  <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
       Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
 
-      <h2>
-      
-      ID: ${data.id} <br>
-      Equipamento: ${data.patrimony} <br>
-      Descrição ou Observações: ${data.description} <br>
-      Número do Lacre ${data.lacre} <br>
-      Responsável do Controle de Estoque: ${data.responsavelEstoque} <br>
-      Responsável da Operação: ${data.responsavelOperacao} <br>
-      Status${data.status}<br>
-      Data e hora do Registro: ${data.created_at}<br>
 
-      </h2>
+      
+
+
+
     </h1>
+
+  <table style="font-size: 12px; font-family: Helvetica Neue; font-weight: normal;" >
+    <tr>
+
+        <td>Equipamento</td>
+        <td>Observação</td>
+        <td>Nº do Lacre</td>
+        <td>Controle de Estoque</td>
+        <td>Operação</td>
+        <td>Status</td>
+        <td>Data e Hora do Registro</td>
+    </tr>
+    <tr>
+
+        <td>${data.patrimony}</td>
+        <td>${data.description}</td>
+        <td>${data.lacre}</td>
+        <td>${data.responsavelEstoque}</td>
+        <td>${data.responsavelOperacao} </td>
+        <td>${data.status}</td>
+        <td>${data.created_at}</td>
+    </tr>
+
+</table>
+
+${data.id}
     <img
       src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
       style="width: 90vw;" />
@@ -120,9 +121,7 @@ export function Order({ data }: Props) {
   return (
     <Container>
 
-<Button title='Imprimir' onPress={print} />
-   
-   <Button title='Salvar PDF' onPress={printToFile} />
+
       <Status status={data.status} />
 
       <Content  >
@@ -205,11 +204,21 @@ export function Order({ data }: Props) {
         </ListItem.Swipeable>
         
       </Content>
+
+
     </Container>
+
+
   );
 }
 
 /* 
+
+
+****************************************************************
+
+      <Button title='Imprimir' onPress={print} />   
+      <Button title='Salvar PDF' onPress={printToFile} />
 
 <ListItem.Title>Hello Swiper</ListItem.Title>
 

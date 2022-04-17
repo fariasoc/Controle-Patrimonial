@@ -1,12 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
+import Ionicons from '@expo/vector-icons/Ionicons';
+
+import {
+  Text,
+  ListItem,
+  Avatar,
+  Icon,
+  Badge,
+  ListItemProps,
+  Button,
+  Switch,
+
+} from '@rneui/themed';
+
 import firestore from '@react-native-firebase/firestore'
 
 import { Load } from '@components/Animations/Load';
 import { Filters } from '@components/Controllers/Filters';
 import { Order, OrderProps } from '@components/Controllers/Order';
 import { Container, Header, Title, Counter } from './styles';
+
+import { View } from 'react-native';
+import * as Print from 'expo-print';
+import { shareAsync } from 'expo-sharing';
 
 export function Orders() {
   const [status, setStatus] = useState('open');
@@ -36,6 +54,71 @@ export function Orders() {
 
   }, [status]);
 
+  const html = `
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  </head>
+  <body style="text-align: center;">
+
+  <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
+      Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
+
+
+      
+
+
+
+    </h1>
+
+  <table style="font-size: 12px; font-family: Helvetica Neue; font-weight: normal;" >
+    <tr>
+
+        <td>Equipamento</td>
+        <td>Observação</td>
+        <td>Nº do Lacre</td>
+        <td>Controle de Estoque</td>
+        <td>Operação</td>
+        <td>Status</td>
+        <td>Data e Hora do Registro</td>
+    </tr>
+    <tr>
+
+        <td>${orders}</td>
+        <td>${orders}</td>
+        <td>${orders}</td>
+        <td>${orders}</td>
+        <td>${orders} </td>
+        <td>${orders}</td>
+        <td>${orders}</td>
+    </tr>
+
+</table>
+
+${orders}
+    <img
+      src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
+      style="width: 90vw;" />
+  </body>
+</html>
+`;
+
+  const [selectedPrinter, setSelectedPrinter] = React.useState();
+
+  const print = async () => {
+    await Print.printAsync({
+      html,
+    });
+  }
+
+  const printToFile = async () => {
+    const { uri } = await Print.printToFileAsync({
+      html
+    });
+    console.log('O arquivo foi salvo em:', uri);
+    await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
+  }
+
   return (
     <Container>
       <Filters onFilter={setStatus} />
@@ -57,6 +140,12 @@ export function Orders() {
             style={{ flex: 1 }}
           />
       }
+      <Ionicons name="document" size={30} color="black" onPress={print}/>
+      <Ionicons name="document" size={30} color="black" onPress={printToFile}/>
+      <Button title='Imprimir' onPress={print} />   
+      <Button title='Salvar PDF' onPress={printToFile} /> 
+
+
     </Container>
   );
 }

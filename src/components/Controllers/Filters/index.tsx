@@ -5,7 +5,7 @@ import { Filter } from '@components/Controllers/Filter';
 import { Container, Title, Options } from './styles';
 
 
-import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 type Props = {
   onFilter: (status: string) => void;
@@ -16,7 +16,7 @@ export function Filters({ onFilter }: Props) {
 
   return (
     <Container>
-      <Title>Filtrar <Ionicons name="document" size={30} color="black" />  </Title>
+      <Title>Filtrar   </Title>
       
       <Options>
         <Filter
