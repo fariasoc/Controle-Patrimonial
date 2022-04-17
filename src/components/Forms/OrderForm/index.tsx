@@ -9,9 +9,9 @@ import { TextArea } from '@components/Controllers/TextArea';
 import { Alert, View } from 'react-native';
 
 export function OrderForm() {
-  const [patrimony, setPatrimony] = useState('');
+  const [patrimonio, setPatrimonio] = useState('');
   const [lacre, setLacre] = useState('');
-  const [description, setDescription] = useState('');
+  const [observacao, setObservacao] = useState('');
   const [responsavelOperacao, setResponsavelOperacao] = useState('');
   const [responsavelEstoque, setResponsavelEstoque] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -22,13 +22,13 @@ export function OrderForm() {
     firestore()
     .collection('orders')
     .add({
-      patrimony,
+      patrimonio,
       lacre,
-      description,
+      observacao,
       responsavelOperacao,
       responsavelEstoque,
       status: 'open',
-      created_at: firestore.FieldValue.serverTimestamp()
+      data_registro: firestore.FieldValue.serverTimestamp()
     })
     .then(() => Alert.alert("OK", "Movimentação incluída com sucesso!") )
     .catch((error) => console.log(error))
@@ -40,11 +40,11 @@ export function OrderForm() {
   return ( 
     <Form>
       <Title>Nova movimentação</Title>
-      <Input placeholder="Equipamento" onChangeText={setPatrimony} />
+      <Input placeholder="Equipamento" onChangeText={setPatrimonio} />
       <Input placeholder="Nº do Lacre" onChangeText={setLacre} />
       <Input placeholder="Responsável Operacional" onChangeText={setResponsavelOperacao} />
       <Input placeholder="Responsável do Controle de Estoque" onChangeText={setResponsavelEstoque} />
-      <Input placeholder="Observações" onChangeText={setDescription} />
+      <Input placeholder="Observações" onChangeText={setObservacao} />
 
       <Button title="Enviar" isLoading={isLoading} onPress={handleNewOrder} />
     

@@ -36,14 +36,14 @@ import { shareAsync } from 'expo-sharing';
 
 export type OrderProps = OrderStyleProps & {
   id: string;
-  patrimony: string;
+  patrimonio: string;
   equipment: string;
-  description: string;
+  observacao: string;
   lacre: string;
   responsavelEstoque: string;
   responsavelOperacao: string;
   status: string;
-  created_at: string;
+  data_registro: string;
 }
 
 type Props = {
@@ -83,13 +83,13 @@ export function Order({ data }: Props) {
     </tr>
     <tr>
 
-        <td>${data.patrimony}</td>
-        <td>${data.description}</td>
+        <td>${data.patrimonio}</td>
+        <td>${data.observacao}</td>
         <td>${data.lacre}</td>
         <td>${data.responsavelEstoque}</td>
         <td>${data.responsavelOperacao} </td>
         <td>${data.status}</td>
-        <td>${data.created_at}</td>
+        <td>${data.data_registro}</td>
     </tr>
 
 </table>
@@ -168,31 +168,32 @@ ${data.id}
             <TouchableOpacity >
               <Header>
 
-                <Title> {data.patrimony} </Title>
+                <Title> {data.patrimonio} </Title>
                 <MaterialIcons
                   name={data.status === "open" ? "lock-open" : "check-circle"}
                   size={24}
+                 
                   color={data.status === "open" ? theme.COLORS.SECONDARY : theme.COLORS.PRIMARY}
                 />
               </Header>
 
               <Footer>
                 <Info>
-                  <MaterialIcons name="lock-open" size={16} color={theme.COLORS.SUBTEXT} />
+                  <MaterialIcons name="lock-open" size={18} color={theme.COLORS.SUBTEXT} />
                   <Label>
-                    {data.status}
+                     {data.status === "open" ? "Aberto" : "Fechado"}
                   </Label>
                 </Info>
 
                 <Info>
-                  <MaterialIcons name="person" size={16} color={theme.COLORS.SUBTEXT} />
+                  <MaterialIcons name="person" size={18} color={theme.COLORS.SUBTEXT} />
                   <Label  >
                     {data.responsavelEstoque}
                   </Label>
                 </Info>
 
                 <Info>
-                  <MaterialIcons name="my-location" size={16} color={theme.COLORS.SUBTEXT} />
+                  <MaterialIcons name="my-location" size={18} color={theme.COLORS.SUBTEXT} />
                   <Label>
                     {data.lacre}
                   </Label>
@@ -200,7 +201,7 @@ ${data.id}
               </Footer>
             </TouchableOpacity>
           </ListItem.Content>
-          <ListItem.Chevron />
+          <ListItem.Chevron  color="#FFFFFF" />
         </ListItem.Swipeable>
         
       </Content>
