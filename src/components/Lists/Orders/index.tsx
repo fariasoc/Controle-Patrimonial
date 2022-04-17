@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
+import { FooterButton } from '../../../components/Controllers/FooterButton'  
+import { Footer } from '../../Forms/SignInForm/styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import {
@@ -140,12 +142,14 @@ ${orders}
             style={{ flex: 1 }}
           />
       }
-      <Ionicons name="document" size={30} color="black" onPress={print}/>
-      <Ionicons name="document" size={30} color="black" onPress={printToFile}/>
-      <Button title='Imprimir' onPress={print} />   
-      <Button title='Salvar PDF' onPress={printToFile} /> 
 
-
+      <Footer>
+        <FooterButton title="PDF" icon="archive" onPress={print} />
+        <FooterButton title="Compartilhar" icon="share" onPress={printToFile}/>
+      </Footer>
+  <>
+  <Text> </Text>
+  </>
     </Container>
   );
 }
