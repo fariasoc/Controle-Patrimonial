@@ -86,11 +86,11 @@ export function Order({ data }: Props) {
       ID: ${data.id} <br>
       Equipamento: ${data.patrimony} <br>
       Descrição ou Observações: ${data.description} <br>
-      ${data.lacre} <br>
-      ${data.responsavelEstoque} <br>
-      ${data.responsavelOperacao} <br>
-      ${data.status}<br>
-      ${data.created_at}<br>
+      Número do Lacre ${data.lacre} <br>
+      Responsável do Controle de Estoque: ${data.responsavelEstoque} <br>
+      Responsável da Operação: ${data.responsavelOperacao} <br>
+      Status${data.status}<br>
+      Data e hora do Registro: ${data.created_at}<br>
 
       </h2>
     </h1>
