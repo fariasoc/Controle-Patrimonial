@@ -12,6 +12,7 @@ export declare global {
       home: undefined;
       signIn: undefined;
       register: undefined;
+      graficos: undefined;
     }
   }
 }
