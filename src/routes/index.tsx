@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from '@react-navigation/native';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
@@ -20,16 +21,24 @@ export function Routes() {
   }, [])
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" > 
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Graficos" component={Graficos} />
-      
-      </Stack.Navigator>
+    <NavigationContainer>      
+
+{ user ? <Home /> : <AuthRoutes /> }
+
+
     </NavigationContainer>
   );
 }
 
 /*
+
+
+      <Stack.Navigator initialRouteName="Home" > 
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Graficos" component={Graficos} />
+      
+      </Stack.Navigator>
+
+
 { user ? <Home /> : <AuthRoutes /> }
 */
