@@ -31,7 +31,7 @@ export function SignInForm() {
   function handleForgotPassword() {
     auth()
     .sendPasswordResetEmail(email)
-    .catch((error) => {
+    .catch( error => { 
       setIsLoading(false)
       console.log(error)
     })
@@ -47,9 +47,9 @@ export function SignInForm() {
 
       <Footer>
         <FooterButton title="Criar conta" icon="person-add" onPress={() => navigation.navigate('register')} />
-        <FooterButton title="Teste" icon="person-add" onPress={() => navigation.navigate('graficos')} />
         <FooterButton title="Esqueci senha" icon="email" onPress={handleForgotPassword} />
       </Footer>
     </Form>
   );
 }
+

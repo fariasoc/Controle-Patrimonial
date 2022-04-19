@@ -14,6 +14,7 @@ const Stack = createNativeStackNavigator()
 export function Routes() {
 
   const [user, setUser] = useState<FirebaseAuthTypes.User | null >(null);
+  
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(setUser)
 
