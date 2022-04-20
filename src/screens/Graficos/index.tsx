@@ -32,7 +32,7 @@ export function Graficos() {
 
       <BackButton onPress={() => navigation.goBack()}>
             <MaterialIcons name="arrow-back" size={24} color={theme.COLORS.PRIMARY} />
-            <BackText> Oie </BackText>
+            <BackText> Gráficos </BackText>
           </BackButton>
     </Container>
   );

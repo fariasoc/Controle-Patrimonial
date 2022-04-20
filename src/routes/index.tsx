@@ -6,15 +6,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 
 import { Home } from '@screens/Home';
-import { Graficos } from'@screens/Graficos';
+import { Graficos } from '@screens/Graficos';
 import { AuthRoutes } from './auth.routes';
 
 const Stack = createNativeStackNavigator()
 
 export function Routes() {
 
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null >(null);
-  
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(setUser)
 
@@ -22,9 +22,9 @@ export function Routes() {
   }, [])
 
   return (
-    <NavigationContainer>      
+    <NavigationContainer>
 
-{ user ? <Home /> : <AuthRoutes /> }
+      {user ? <Home /> : <AuthRoutes /> && <Graficos /> }
 
 
     </NavigationContainer>
