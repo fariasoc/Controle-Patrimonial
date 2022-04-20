@@ -28,6 +28,7 @@ export function SignInForm() {
     .finally(() => setIsLoading(false))
   }
 
+  
   function handleForgotPassword() {
     auth()
     .sendPasswordResetEmail(email)
