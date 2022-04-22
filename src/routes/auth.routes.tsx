@@ -14,6 +14,7 @@ export function AuthRoutes() {
       <Screen name="register" component={Register} />
       <Screen name="graficos" component={Graficos} />
       
+      
     </Navigator>
   );
 }
