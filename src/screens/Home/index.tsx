@@ -4,6 +4,7 @@ import { Container } from './styles';
 import { Header } from '@components/Layout/Header';
 import { Orders } from '@components/Lists/Orders';
 import { NewOrder } from '@components/Controllers/NewOrder';
+import { Graficos } from '@screens/Graficos';
 
 export function Home() {
     return (
@@ -11,6 +12,7 @@ export function Home() {
       <Header />
       <Orders />
       <NewOrder />
+      <Graficos />
     </Container>
   );
 }
