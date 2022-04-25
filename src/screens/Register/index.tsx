@@ -21,7 +21,7 @@ export function Register() {
         <Content>
           <Lottie source={registerAnimation} />
 
-          <SubTitle>Conte conosco, estamos aqui para ajudar.</SubTitle>
+          <SubTitle>Conte conosco, estamos aqui para ajudar!</SubTitle>
           <AccountForm />
 
           <BackButton onPress={() => navigation.goBack()}>
