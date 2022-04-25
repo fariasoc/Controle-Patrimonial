@@ -3,10 +3,10 @@ import { StyleSheet, View } from "react-native"
 import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native"
 
 const data = [
-  { quarter: 1, earnings: 13000 },
-  { quarter: 2, earnings: 16500 },
-  { quarter: 3, earnings: 14250 },
-  { quarter: 4, earnings: 19000 }
+  { quarter: 'Refinaria', earnings: 4 },
+  { quarter: 'Lecitina', earnings: 7 },
+  { quarter: 'Degomado', earnings: 4 },
+  { quarter: 'Goma e Borra', earnings: 2 }
 ]
 
 export function Graficos() {
