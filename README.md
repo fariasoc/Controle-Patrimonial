@@ -31,3 +31,4 @@ Clone this project and start with Expo:
   npm install
   expo start
 ```
+
