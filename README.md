@@ -7,7 +7,7 @@
 - Firebase Auth
 - Password recovery with e-mail
 - Firebase Firestore with Real Time updates
-- Off line first ..
+- Off line first ...
 
 
 ## Features
