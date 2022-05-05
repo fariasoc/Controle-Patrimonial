@@ -7,12 +7,21 @@ import { NewOrder } from '@components/Controllers/NewOrder';
 import { Graficos } from '@screens/Graficos';
 
 export function Home() {
-    return (
+  return (
     <Container>
       <Header />
       <Orders />
       <NewOrder />
-      <Graficos />
     </Container>
   );
 }
+
+/*
+
+   <Header />
+      <Orders />
+      <Graficos />
+
+      <NewOrder />
+
+*/
