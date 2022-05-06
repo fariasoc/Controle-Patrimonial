@@ -24,7 +24,7 @@ export function Routes() {
   return (
     <NavigationContainer>
 
-      {user ? <Home /> : <AuthRoutes /> && <Graficos /> }
+      {user ? <Home /> : <AuthRoutes /> }
 
 
     </NavigationContainer>

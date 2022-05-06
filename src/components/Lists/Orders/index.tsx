@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList } from 'react-native';
+import {  } from 'react-native';
+import { StyleSheet, View, FlatList } from "react-native"
+import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native"
 
 import { FooterButton } from '../../../components/Controllers/FooterButton'  
 import { Footer } from '../../Forms/SignInForm/styles';
@@ -24,7 +26,6 @@ import { Filters } from '@components/Controllers/Filters';
 import { Order, OrderProps } from '@components/Controllers/Order';
 import { Container, Header, Title, Counter } from './styles';
 
-import { View } from 'react-native';
 import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
 
@@ -122,7 +123,13 @@ ${orders}
   }
 
   return (
+
+
+
     <Container>
+
+
+
       <Filters onFilter={setStatus} />
 
       <Header>
@@ -153,3 +160,21 @@ ${orders}
     </Container>
   );
 }
+
+/*
+
+const styles = StyleSheet.create({
+  container: {
+
+    backgroundColor: "#e6dee6"
+  }
+});
+
+
+<View style={styles.container}>
+    <VictoryChart width={350} theme={VictoryTheme.material}>
+      <VictoryBar data={orders} x="quarter" y="earnings" />
+    </VictoryChart>
+  </View>
+
+  */
