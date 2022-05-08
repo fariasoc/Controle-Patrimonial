@@ -35,15 +35,15 @@ import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
 
 export type OrderProps = OrderStyleProps & {
-  id: string;
-  patrimonio: string;
-  equipment: string;
-  observacao: string;
-  lacre: string;
-  responsavelEstoque: string;
-  responsavelOperacao: string;
-  status: string;
-  data_registro: string;
+  id: string
+  patrimonio: string
+  equipment: string
+  observacao: string
+  lacre: string
+  responsavelEstoque: string
+  responsavelOperacao: string
+  status: string
+  data_registro: string
 }
 
 type Props = {
