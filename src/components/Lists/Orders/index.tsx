@@ -155,7 +155,7 @@ ${orders}
         <FooterButton title="Compartilhar" icon="share" onPress={printToFile}/>
       </Footer>
   <>
-  <Text> sdsdsd </Text>
+  <Text> s </Text>
   </>
     </Container>
   );
