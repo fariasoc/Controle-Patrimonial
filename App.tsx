@@ -22,7 +22,7 @@ export default function App() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 2 }}>
       <ThemeProvider theme={theme}>
         <StatusBar style="dark" translucent backgroundColor="transparent" />
         <Routes />
@@ -31,3 +31,5 @@ export default function App() {
 
   );
 }
+
+/* style={{ flex: 1 }} */
