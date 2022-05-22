@@ -21,10 +21,10 @@ export function Routes() {
     return subscriber
   }, [])
 
-  return (
+  return ( 
     <NavigationContainer>
 
-      {user ? <Home /> : <AuthRoutes /> }
+      {user ? <Home /> && <Graficos />  : <AuthRoutes /> }
 
 
     </NavigationContainer>
