@@ -16,6 +16,11 @@ export function Filters({ onFilter }: Props) {
       <Title>Filtrar   </Title>
       
       <Options>
+      <Filter
+          title="Todos"
+          backgroundColor={theme.COLORS.TEXT}
+          onPress={() => onFilter('closed' && 'open')}
+        />
         <Filter
           title="Abertos"
           backgroundColor={theme.COLORS.SECONDARY}

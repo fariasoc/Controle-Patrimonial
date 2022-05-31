@@ -4,7 +4,7 @@ import { StyleSheet, View, FlatList } from "react-native"
 import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native"
 
 import { FooterButton } from '../../../components/Controllers/FooterButton'  
-import { Footer } from '../../Forms/SignInForm/styles';
+import { Footer, SharedFooter } from '../../Forms/SignInForm/styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import {
@@ -150,12 +150,11 @@ ${orders}
           />
       }
 
-      <Footer>
+      <SharedFooter>
         <FooterButton title="PDF" icon="archive" onPress={print} />
         <FooterButton title="Compartilhar" icon="share" onPress={printToFile}/>
-      </Footer>
+      </SharedFooter>
   <>
-  <Text> s </Text>
   </>
     </Container>
   );

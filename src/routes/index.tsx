@@ -24,7 +24,7 @@ export function Routes() {
   return ( 
     <NavigationContainer>
 
-      {user ? <Home /> && <Graficos />  : <AuthRoutes /> }
+      {user ? <Home /> : <AuthRoutes /> }
 
 
     </NavigationContainer>
@@ -32,7 +32,7 @@ export function Routes() {
 }
 
 /*
-
+      {user ? [<Home /> , <Graficos />]  : <AuthRoutes /> }
 
       <Stack.Navigator initialRouteName="Home" > 
       <Stack.Screen name="Home" component={Home} />

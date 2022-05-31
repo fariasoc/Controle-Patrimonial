@@ -16,3 +16,10 @@ export const Footer = styled.View`
   align-items: center; 
   margin-top: 50px; 
 `;
+
+export const SharedFooter = styled.View`    
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; 
+  
+`;
