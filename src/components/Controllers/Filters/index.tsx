@@ -13,7 +13,7 @@ export function Filters({ onFilter }: Props) {
 
   return (
     <Container>
-      <Title>Filtrar   </Title>
+      <Title>Filtrar </Title>
       
       <Options>
       <Filter
