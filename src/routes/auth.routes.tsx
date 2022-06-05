@@ -12,9 +12,7 @@ export function AuthRoutes() {
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="signIn" component={SignIn} />
       <Screen name="register" component={Register} />
-      <Screen name="graficos" component={Graficos} />
-      
-      
+      <Screen name="graficos" component={Graficos} />      
     </Navigator>
   );
 }

@@ -96,20 +96,12 @@ export function Orders() {
   }
 
   return (
-
-
-
     <Container>
-
-
-
       <Filters onFilter={setStatus} />
-
       <Header>
         <Title>Equipamentos {status === 'open' ? 'aberto' : 'fechados'}</Title>
         <Counter>{orders.length}</Counter>
       </Header>
-
       {
         isLoading ?
           <Load />
@@ -132,21 +124,3 @@ export function Orders() {
     </Container>
   );
 }
-
-/*
-
-const styles = StyleSheet.create({
-  container: {
-
-    backgroundColor: "#e6dee6"
-  }
-});
-
-
-<View style={styles.container}>
-    <VictoryChart width={350} theme={VictoryTheme.material}>
-      <VictoryBar data={orders} x="quarter" y="earnings" />
-    </VictoryChart>
-  </View>
-
-  */
