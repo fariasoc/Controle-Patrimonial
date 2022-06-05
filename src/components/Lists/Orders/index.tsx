@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FlatList } from "react-native"
-import { FooterButton } from '../../../components/Controllers/FooterButton'  
+import { FooterButton } from '../../../components/Controllers/FooterButton'
 import { SharedFooter } from '../../Forms/SignInForm/styles'
 
 import firestore from '@react-native-firebase/firestore'
@@ -22,24 +22,45 @@ export function Orders() {
     setIsLoading(true)
 
     const subscribe = firestore()
-    .collection('orders')
-    .where('status', '==', status)
-    .onSnapshot(querySnapshot => { 
-      const data = querySnapshot.docs.map(doc => {
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      }) as OrderProps[]
+      .collection('orders')
+      .where('status', '==', status)
+      .onSnapshot(querySnapshot => {
+        const data = querySnapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        }) as OrderProps[]
 
-      setOrders(data)
-      setIsLoading(false)
+        setOrders(data)
+        setIsLoading(false)
 
-    })
+      })
 
     return () => subscribe()
 
   }, [status]);
+
+  useEffect(() => {
+    setIsLoading(true)
+    const sub = firestore()
+      .collection('orders')
+      .onSnapshot(querySnapshot => {
+        const dat = querySnapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        }) as OrderProps[]
+
+        setOrders(dat)
+        setIsLoading(false)
+
+      })
+
+    return () => sub()
+
+  }, [])
 
   const html = `
       <html>
@@ -79,10 +100,6 @@ export function Orders() {
       </html>
 `;
 
-const Html = (doc: any) => {
-
-}
-
   const print = async () => {
     await Print.printAsync({
       html,
@@ -104,25 +121,36 @@ const Html = (doc: any) => {
         <Title>Equipamentos {status === 'open' ? 'aberto' : 'fechados'}</Title>
         <Counter>{orders.length}</Counter>
       </Header>
-      {
-        isLoading ?
-          <Load />
-          : <FlatList
-            data={orders}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => <Order data={item} />}
-            contentContainerStyle={{ paddingBottom: 100 }}
-            showsVerticalScrollIndicator={false}
-            style={{ flex: 1 }}
-          />
-      }
+
+      <FlatList
+        data={orders}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => <Order data={item} />}
+        contentContainerStyle={{ paddingBottom: 100 }}
+        showsVerticalScrollIndicator={true}
+        style={{ flex: 1 }}
+      />
 
       <SharedFooter>
         <FooterButton title="PDF" icon="archive" onPress={print} />
-        <FooterButton title="Compartilhar" icon="share" onPress={printToFile}/>
+        <FooterButton title="Compartilhar" icon="share" onPress={printToFile} />
       </SharedFooter>
-  <>
-  </>
+      <>
+      </>
     </Container>
   );
 }
+/*
+{
+  isLoading ?
+    <Load />
+    : <FlatList
+      data={orders}
+      keyExtractor={item => item.id}
+      renderItem={({ item }) => <Order data={item} />}
+      contentContainerStyle={{ paddingBottom: 100 }}
+      showsVerticalScrollIndicator={false}
+      style={{ flex: 1 }}
+    />
+}
+*/

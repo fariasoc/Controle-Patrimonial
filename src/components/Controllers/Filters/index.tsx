@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
 
 import { Filter } from '@components/Controllers/Filter';
 import { Container, Title, Options } from './styles';
+
+import firestore from '@react-native-firebase/firestore';
+import { Order, OrderProps } from '@components/Controllers/Order'
 
 type Props = {
   onFilter: (status: string) => void;
@@ -10,17 +13,18 @@ type Props = {
 
 export function Filters({ onFilter }: Props) {
   const theme = useTheme();
-
+   
   return (
     <Container>
       <Title>Filtrar</Title>
       
       <Options>
-      <Filter
+       <Filter
           title="Todos"
-          backgroundColor={theme.COLORS.TEXT}
+          backgroundColor={theme.COLORS.BLUE2}
           onPress={() => onFilter('closed' && 'open')}
-        />
+
+              />
         <Filter
           title="Abertos"
           backgroundColor={theme.COLORS.SECONDARY}
@@ -35,4 +39,8 @@ export function Filters({ onFilter }: Props) {
       </Options>
     </Container>
   );
+}
+
+function setIsLoading(arg0: boolean) {
+  throw new Error('Function not implemented.');
 }

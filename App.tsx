@@ -26,8 +26,10 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <StatusBar style="dark" translucent backgroundColor="transparent" />
         <Routes />
+        
       </ThemeProvider>
+      
     </GestureHandlerRootView>
-
+    
   );
 }

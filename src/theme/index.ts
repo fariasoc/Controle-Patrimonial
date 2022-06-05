@@ -9,7 +9,10 @@ export default {
     SUBTEXT: '#8D919E',
 
     WHITE: '#FFFFFF',
-    BORDER: '#C5CADA'
+    BORDER: '#C5CADA',
+
+    BLUE: '#13293D',
+    BLUE2: '#2d2e47'
   },
 
   FONTS: {
