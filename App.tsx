@@ -31,5 +31,3 @@ export default function App() {
 
   );
 }
-
-/* style={{ flex: 1 }} */
