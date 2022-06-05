@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import {  } from 'react-native';
-import { StyleSheet, View, FlatList } from "react-native"
-import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native"
-
+import React, { useEffect, useState } from 'react'
+import { FlatList } from "react-native"
 import { FooterButton } from '../../../components/Controllers/FooterButton'  
-import { Footer, SharedFooter } from '../../Forms/SignInForm/styles';
-import Ionicons from '@expo/vector-icons/Ionicons';
-
-import {
-  Text,
-  ListItem,
-  Avatar,
-  Icon,
-  Badge,
-  ListItemProps,
-  Button,
-  Switch,
-
-} from '@rneui/themed';
+import { SharedFooter } from '../../Forms/SignInForm/styles'
 
 import firestore from '@react-native-firebase/firestore'
 
-import { Load } from '@components/Animations/Load';
-import { Filters } from '@components/Controllers/Filters';
-import { Order, OrderProps } from '@components/Controllers/Order';
-import { Container, Header, Title, Counter } from './styles';
+import { Load } from '@components/Animations/Load'
+import { Filters } from '@components/Controllers/Filters'
+import { Order, OrderProps } from '@components/Controllers/Order'
+import { Container, Header, Title, Counter } from './styles'
 
-import * as Print from 'expo-print';
-import { shareAsync } from 'expo-sharing';
+import * as Print from 'expo-print'
+import { shareAsync } from 'expo-sharing'
 
 export function Orders() {
   const [status, setStatus] = useState('open');
@@ -58,55 +42,44 @@ export function Orders() {
   }, [status]);
 
   const html = `
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-  </head>
-  <body style="text-align: center;">
+      <html>
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        </head>
+        <body style="text-align: center;">
 
-  <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
-      Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
+        <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
+            Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
+        </h1>
 
+        <table style="font-size: 12px; font-family: Helvetica Neue; font-weight: normal;" >
+          <tr>
+              <td>Equipamento</td>
+              <td>Observação</td>
+              <td>Nº do Lacre</td>
+              <td>Controle de Estoque</td>
+              <td>Operação</td>
+              <td>Status</td>
+              <td>Data e Hora do Registro</td>
+          </tr>
+          <tr>
+              <td>${orders}</td>
+              <td>${orders}</td>
+              <td>${orders}</td>
+              <td>${orders}</td>
+              <td>${orders} </td>
+              <td>${orders}</td>
+              <td>${orders}</td>
+          </tr>
+      </table>
 
-      
-
-
-
-    </h1>
-
-  <table style="font-size: 12px; font-family: Helvetica Neue; font-weight: normal;" >
-    <tr>
-
-        <td>Equipamento</td>
-        <td>Observação</td>
-        <td>Nº do Lacre</td>
-        <td>Controle de Estoque</td>
-        <td>Operação</td>
-        <td>Status</td>
-        <td>Data e Hora do Registro</td>
-    </tr>
-    <tr>
-
-        <td>${orders}</td>
-        <td>${orders}</td>
-        <td>${orders}</td>
-        <td>${orders}</td>
-        <td>${orders} </td>
-        <td>${orders}</td>
-        <td>${orders}</td>
-    </tr>
-
-</table>
-
-${orders}
-    <img
-      src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
-      style="width: 90vw;" />
-  </body>
-</html>
+      ${orders}
+          <img
+            src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
+            style="width: 90vw;" />
+        </body>
+      </html>
 `;
-
-  const [selectedPrinter, setSelectedPrinter] = React.useState();
 
   const print = async () => {
     await Print.printAsync({

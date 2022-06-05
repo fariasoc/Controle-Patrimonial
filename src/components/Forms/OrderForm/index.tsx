@@ -35,11 +35,11 @@ export function OrderForm() {
     .finally(() => setIsLoading(false))
   }
 
-  
-
   return ( 
     <Form>
+
       <Title>Nova movimentação</Title>
+
       <Input placeholder="Equipamento" onChangeText={setPatrimonio} />
       <Input placeholder="Nº do Lacre" onChangeText={setLacre} />
       <Input placeholder="Responsável Operacional" onChangeText={setResponsavelOperacao} />
@@ -47,9 +47,7 @@ export function OrderForm() {
       <Input placeholder="Observações" onChangeText={setObservacao} />
 
       <Button title="Enviar" isLoading={isLoading} onPress={handleNewOrder} />
-    
-    
+        
     </Form>
   );
-
 }
