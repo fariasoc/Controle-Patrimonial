@@ -63,23 +63,25 @@ export function Orders() {
               <td>Data e Hora do Registro</td>
           </tr>
           <tr>
-              <td>${orders}</td>
-              <td>${orders}</td>
-              <td>${orders}</td>
-              <td>${orders}</td>
-              <td>${orders} </td>
-              <td>${orders}</td>
-              <td>${orders}</td>
-          </tr>
-      </table>
+              <td>${orders.length}</td>
 
-      ${orders}
+          </tr>
+      </table>94
+
+      ${orders.length} 
           <img
             src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
             style="width: 90vw;" />
         </body>
+
+
+
       </html>
 `;
+
+const Html = (doc: any) => {
+
+}
 
   const print = async () => {
     await Print.printAsync({
