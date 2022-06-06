@@ -9,7 +9,7 @@ export const Container = styled.View`
   height: 94px;
   flex-direction: row;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 `;
 
 export const Content = styled.View`
@@ -33,12 +33,11 @@ export const Status = styled.View<OrderStyleProps>`
 
 export const Title = styled.Text`
   flex: 1;
-  font-size: 18px;
+  font-size: 16px;
   font-family: ${({ theme }) => theme.FONTS.TITLE};
   color: ${({ theme }) => theme.COLORS.TEXT};
   margin-bottom: 18px;
 `;
-
 
 export const Info = styled.View`
   flex-direction: row;

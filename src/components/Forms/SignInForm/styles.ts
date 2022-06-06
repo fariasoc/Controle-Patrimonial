@@ -21,5 +21,7 @@ export const SharedFooter = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center; 
+  margin-bottom: 10px; 
+  margin-top: 10px; 
   
 `;
