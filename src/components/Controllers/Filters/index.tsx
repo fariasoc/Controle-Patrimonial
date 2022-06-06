@@ -6,6 +6,7 @@ import { Container, Title, Options } from './styles';
 
 import firestore from '@react-native-firebase/firestore';
 import { Order, OrderProps } from '@components/Controllers/Order'
+import { FlatList } from 'react-native';
 
 type Props = {
   onFilter: (status: string) => void;
@@ -13,18 +14,20 @@ type Props = {
 
 export function Filters({ onFilter }: Props) {
   const theme = useTheme();
-   
+ 
   return (
     <Container>
       <Title>Filtrar</Title>
       
       <Options>
-       <Filter
+        <Filter
           title="Todos"
-          backgroundColor={theme.COLORS.BLUE2}
-          onPress={() => onFilter('closed' && 'open')}
+          backgroundColor={theme.COLORS.BLUE}
+          onPress={() => (onFilter('open'))
+          
+          }
 
-              />
+        />
         <Filter
           title="Abertos"
           backgroundColor={theme.COLORS.SECONDARY}

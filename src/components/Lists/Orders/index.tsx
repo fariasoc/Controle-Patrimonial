@@ -41,27 +41,7 @@ export function Orders() {
 
   }, [status]);
 
-  useEffect(() => {
-    setIsLoading(true)
-    const sub = firestore()
-      .collection('orders')
-      .onSnapshot(querySnapshot => {
-        const dat = querySnapshot.docs.map(doc => {
-          return {
-            id: doc.id,
-            ...doc.data()
-          }
-        }) as OrderProps[]
-
-        setOrders(dat)
-        setIsLoading(false)
-
-      })
-
-    return () => sub()
-
-  }, [])
-
+  
   const html = `
       <html>
         <head>
@@ -118,18 +98,22 @@ export function Orders() {
     <Container>
       <Filters onFilter={setStatus} />
       <Header>
-        <Title>Equipamentos {status === 'open' ? 'aberto' : 'fechados'}</Title>
+        <Title>Equipamentos {status === 'open' ? 'abertos' : 'fechados'}</Title>
         <Counter>{orders.length}</Counter>
       </Header>
 
-      <FlatList
-        data={orders}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => <Order data={item} />}
-        contentContainerStyle={{ paddingBottom: 100 }}
-        showsVerticalScrollIndicator={true}
-        style={{ flex: 1 }}
-      />
+      {
+        isLoading ?
+          <Load />
+          : <FlatList
+            data={orders}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Order data={item} />}
+            contentContainerStyle={{ paddingBottom: 100 }}
+            showsVerticalScrollIndicator={false}
+            style={{ flex: 1 }}
+          />
+      }
 
       <SharedFooter>
         <FooterButton title="PDF" icon="archive" onPress={print} />
@@ -140,17 +124,3 @@ export function Orders() {
     </Container>
   );
 }
-/*
-{
-  isLoading ?
-    <Load />
-    : <FlatList
-      data={orders}
-      keyExtractor={item => item.id}
-      renderItem={({ item }) => <Order data={item} />}
-      contentContainerStyle={{ paddingBottom: 100 }}
-      showsVerticalScrollIndicator={false}
-      style={{ flex: 1 }}
-    />
-}
-*/

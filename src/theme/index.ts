@@ -11,8 +11,7 @@ export default {
     WHITE: '#FFFFFF',
     BORDER: '#C5CADA',
 
-    BLUE: '#13293D',
-    BLUE2: '#2d2e47'
+    BLUE: '#2d2e47'
   },
 
   FONTS: {
