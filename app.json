@@ -1,14 +1,11 @@
 {
   "expo": {
-    "name": "helpdesk",
-    "slug": "helpdesk",
+    "name": "controlx",
+    "slug": "controlx",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "android": {
-      "package": "com.fariasoc.helpdesk"
-    }
+    ]
   },
-  "name": "helpdesk"
+  "name": "controlx"
 }
