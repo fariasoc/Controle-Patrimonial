@@ -23,9 +23,7 @@ export function Filters({ onFilter }: Props) {
         <Filter
           title="Todos"
           backgroundColor={theme.COLORS.BLUE}
-          onPress={() => (onFilter('open'))
-          
-          }
+          onPress={() => onFilter('Todos')}
 
         />
         <Filter

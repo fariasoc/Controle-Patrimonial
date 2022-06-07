@@ -17,6 +17,26 @@ export function Orders() {
   const [status, setStatus] = useState('open');
   const [isLoading, setIsLoading] = useState(false);
   const [orders, setOrders] = useState<OrderProps[]>([]);
+  const [equipments, setEquipments] = useState<OrderProps[]>([]);
+  
+  var numberEquipments = firestore()
+  .collection('orders')
+  .get()
+  .then(querySnapshot => {
+    querySnapshot.size
+  }
+  )
+
+
+  var filtroAtivo = null;
+
+  if (status === 'Todos') {
+    filtroAtivo = 'Todos'
+
+  
+  } else {
+    console.log(status)
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -41,7 +61,38 @@ export function Orders() {
 
   }, [status]);
 
-  
+  useEffect(() => {
+    setIsLoading(true)
+
+    const subscribe = firestore()
+      .collection('orders')
+      .onSnapshot(querySnapshot => {
+        const data = querySnapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        }) as OrderProps[]
+
+        setEquipments(data)
+        setIsLoading(false)
+
+        firestore()
+            .collection('orders')
+            .get()
+            .then(querySnapshot => {
+              querySnapshot.size
+            }
+            )
+
+
+      })
+
+    return () => subscribe()
+
+  }, [status]);
+
+console.log(numberEquipments)
   const html = `
       <html>
         <head>
@@ -94,17 +145,44 @@ export function Orders() {
     await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
   }
 
+  console.log(equipments.length)
+
+  function translateStateFilter(){
+    if(status === 'Todos'){
+      return 'Todos os Equipamentos'
+    }
+    if(status === 'open'){
+      return 'Equipamentos Abertos'
+    }
+    if(status === 'closed'){
+      return 'Equipamentos Fechados'
+    }
+  }
+
   return (
     <Container>
       <Filters onFilter={setStatus} />
       <Header>
-        <Title>Equipamentos {status === 'open' ? 'abertos' : 'fechados'}</Title>
-        <Counter>{orders.length}</Counter>
+        <Title>{ translateStateFilter() }</Title>
+        <Counter>          
+          { status === 'Todos' ? equipments.length : orders.length  
+          }
+        
+        </Counter>
       </Header>
 
       {
-        isLoading ?
-          <Load />
+
+        filtroAtivo ?
+          <Load /> &&
+          <FlatList
+            data={equipments}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Order data={item} />}
+            contentContainerStyle={{ paddingBottom: 100 }}
+            showsVerticalScrollIndicator={false}
+            style={{ flex: 1 }}
+          />
           : <FlatList
             data={orders}
             keyExtractor={item => item.id}
@@ -119,8 +197,50 @@ export function Orders() {
         <FooterButton title="PDF" icon="archive" onPress={print} />
         <FooterButton title="Compartilhar" icon="share" onPress={printToFile} />
       </SharedFooter>
-      <>
-      </>
+
     </Container>
   );
 }
+
+/*
+{
+        isLoading ?
+          <Load />
+          : <FlatList
+            data={orders}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Order data={item} />}
+            contentContainerStyle={{ paddingBottom: 100 }}
+            showsVerticalScrollIndicator={false}
+            style={{ flex: 1 }}
+          />
+      }
+*/
+
+/*
+
+
+      {
+        
+        filtroAtivo ? 
+
+        <FlatList
+        data={equipments}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => <Order data={item} />}
+        contentContainerStyle={{ paddingBottom: 100 }}
+        showsVerticalScrollIndicator={false}
+        style={{ flex: 1 }}
+      />
+          : <FlatList
+            data={orders}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Order data={item} />}
+            contentContainerStyle={{ paddingBottom: 100 }}
+            showsVerticalScrollIndicator={false}
+            style={{ flex: 1 }}
+          />
+      }
+
+
+*/
