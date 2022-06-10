@@ -18,14 +18,8 @@ export function Orders() {
   const [isLoading, setIsLoading] = useState(false);
   const [orders, setOrders] = useState<OrderProps[]>([]);
   const [equipments, setEquipments] = useState<OrderProps[]>([]);
-  
-  var numberEquipments = firestore()
-  .collection('orders')
-  .get()
-  .then(querySnapshot => {
-    querySnapshot.size
-  }
-  )
+  var equipamentos: string
+  var stringHTML = createPDF()
 
 
   var filtroAtivo = null;
@@ -34,8 +28,6 @@ export function Orders() {
     filtroAtivo = 'Todos'
 
   
-  } else {
-    console.log(status)
   }
 
   useEffect(() => {
@@ -77,35 +69,47 @@ export function Orders() {
         setEquipments(data)
         setIsLoading(false)
 
-        firestore()
-            .collection('orders')
-            .get()
-            .then(querySnapshot => {
-              querySnapshot.size
-            }
-            )
-
-
       })
 
     return () => subscribe()
 
   }, [status]);
 
-console.log(numberEquipments)
+  function createPDF(){
+    let i = 0; 
+
+    for (i ; i < equipments.length ; i++){
+      equipamentos = 
+                     '<tr>'+equipamentos + 
+                     '<td>'+equipments[i].id+'</td>' +
+                     '<td>'+equipments[i].patrimonio+'</td>' + 
+                     '<td>'+equipments[i].observacao+'</td>' + 
+                     '<td>'+equipments[i].lacre+'</td>' + 
+                     '<td>'+equipments[i].responsavelEstoque+'</td>' + 
+                     '<td>'+equipments[i].responsavelOperacao+'</td>' + 
+                     '<td>'+ translateStateFilterPDF(equipments[i].status) +'</td>' + 
+                     '<td>'+equipments[i].data_registro+'</td>' + 
+                     '</tr>'
+     }
+    return equipamentos
+  }
+
+  console.log(stringHTML);
+
   const html = `
       <html>
         <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+         
         </head>
-        <body style="text-align: center;">
+        <body>
 
         <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
             Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
         </h1>
 
-        <table style="font-size: 12px; font-family: Helvetica Neue; font-weight: normal;" >
+        <table  >
           <tr>
+              <td>ID</td>
               <td>Equipamento</td>
               <td>Observação</td>
               <td>Nº do Lacre</td>
@@ -114,16 +118,12 @@ console.log(numberEquipments)
               <td>Status</td>
               <td>Data e Hora do Registro</td>
           </tr>
-          <tr>
-              <td>${orders.length}</td>
+          
+              ${stringHTML}
 
-          </tr>
-      </table>94
+          
+      </table>
 
-      ${orders.length} 
-          <img
-            src="https://d30j33t1r58ioz.cloudfront.net/static/guides/sdk.png"
-            style="width: 90vw;" />
         </body>
 
 
@@ -145,9 +145,7 @@ console.log(numberEquipments)
     await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
   }
 
-  console.log(equipments.length)
-
-  function translateStateFilter(){
+  function translateStateFilter(status: string | undefined){
     if(status === 'Todos'){
       return 'Todos os Equipamentos'
     }
@@ -159,11 +157,23 @@ console.log(numberEquipments)
     }
   }
 
+  function translateStateFilterPDF(status: string | undefined){
+    if(status === 'Todos'){
+      return 'Todos os Equipamentos'
+    }
+    if(status === 'open'){
+      return 'Aberto'
+    }
+    if(status === 'closed'){
+      return 'Fechado'
+    }
+  }
+
   return (
     <Container>
       <Filters onFilter={setStatus} />
       <Header>
-        <Title>{ translateStateFilter() }</Title>
+        <Title>{ translateStateFilter(status) }</Title>
         <Counter>          
           { status === 'Todos' ? equipments.length : orders.length  
           }
