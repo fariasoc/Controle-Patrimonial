@@ -78,7 +78,7 @@ export function Order({ data }: Props) {
                   .doc(data.id)
                   .update({
                     status: 'open',
-                    created_at: firestore.FieldValue.serverTimestamp()
+                    created_at[i]: firestore.FieldValue.serverTimestamp()
                   })
                   .catch((error) => console.log(error))
               }}
