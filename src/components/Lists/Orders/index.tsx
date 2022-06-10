@@ -78,10 +78,9 @@ export function Orders() {
   function createPDF(){
     let i = 0; 
 
-    for (i ; i < equipments.length ; i++){
+    while ( i < equipments.length){
       equipamentos = 
-                     '<tr>'+equipamentos + 
-                     '<td>'+equipments[i].id+'</td>' +
+                     '<tr>'+ 
                      '<td>'+equipments[i].patrimonio+'</td>' + 
                      '<td>'+equipments[i].observacao+'</td>' + 
                      '<td>'+equipments[i].lacre+'</td>' + 
@@ -89,46 +88,85 @@ export function Orders() {
                      '<td>'+equipments[i].responsavelOperacao+'</td>' + 
                      '<td>'+ translateStateFilterPDF(equipments[i].status) +'</td>' + 
                      '<td>'+equipments[i].data_registro+'</td>' + 
+                     '<td style="color:white">'+equipamentos+'</td>'
                      '</tr>'
-     }
+
+                     i++
+    }
     return equipamentos
   }
 
   console.log(stringHTML);
 
+  // Obtém a data/hora atual
+var data = new Date();
+
+// Guarda cada pedaço em uma variável
+var dia     = data.getDate();           // 1-31
+var dia_sem = data.getDay();            // 0-6 (zero=domingo)
+var mes     = data.getMonth();          // 0-11 (zero=janeiro)
+var ano4    = data.getFullYear();       // 4 dígitos
+var hora    = data.getHours();          // 0-23
+var min     = data.getMinutes();        // 0-59
+var seg     = data.getSeconds();        // 0-59
+var mseg    = data.getMilliseconds();   // 0-999
+var tz      = data.getTimezoneOffset(); // em minutos
+
+// Formata a data e a hora (note o mês + 1)
+var str_data = dia + '/' + (mes+1) + '/' + ano4;
+var str_hora = hora + ':' + min + ':' + seg;
+
+// Mostra o resultado
+//alert('Hoje é ' + str_data + ' às ' + str_hora);
+
   const html = `
-      <html>
-        <head>
-         
-        </head>
-        <body>
+  <html>
 
-        <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
-            Controle de Estoque: Gestão Patrimonial | Controle de Fluxo 
-        </h1>
+  <head>
+  
+  </head>
+  
+  <body style="border: solid; padding: 10px"  >
+  
 
-        <table  >
-          <tr>
-              <td>ID</td>
-              <td>Equipamento</td>
-              <td>Observação</td>
-              <td>Nº do Lacre</td>
-              <td>Controle de Estoque</td>
-              <td>Operação</td>
-              <td>Status</td>
-              <td>Data e Hora do Registro</td>
-          </tr>
-          
-              ${stringHTML}
+    <h1 style="font-size: 60px; font-family: Helvetica Neue; font-weight: bold;">
+      Controle de Estoque <br>
+    </h1>
+  
+    <h1 style="font-size: 30px; font-family: Helvetica Neue; font-weight: bold;">
+      Status da lacração dos equipamentos da LDC
+    </h1>
+  
+    <p>
+  
+      Data do relatório: ${str_data} <br>
+      Horário: ${str_hora}
+  
+    </p>
+  
+    <table>
+      <tr style="font-weight: bold">
+        <td>Equipamento</td>
+        <td>Observação</td>
+        <td>Nº do Lacre</td>
+        <td>Controle de Estoque</td>
+        <td>Operação</td>
+        <td>Status</td>
+        <td>Data e Hora do Registro</td>
+      </tr>
+  
+      ${stringHTML}
+  
+  
+    </table>
+   
+    <footer>
+      <p>________________________<br>
+      <b> Responsável - Controle de Estoque </b> </p>
+</footer>
 
-          
-      </table>
-
-        </body>
-
-
-
-      </html>
+  </body>
+  </html>
 `;
 
   const print = async () => {

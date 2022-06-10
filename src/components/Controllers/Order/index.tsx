@@ -42,6 +42,29 @@ type Props = {
 export function Order({ data }: Props) {
   const theme = useTheme();
 
+  var update
+  var i = 0;
+  // Obtém a data/hora atual
+var Data = new Date();
+
+// Guarda cada pedaço em uma variável
+var dia     = Data.getDate();           // 1-31
+var dia_sem = Data.getDay();            // 0-6 (zero=domingo)
+var mes     = Data.getMonth();          // 0-11 (zero=janeiro)
+var ano4    = Data.getFullYear();       // 4 dígitos
+var hora    = Data.getHours();          // 0-23
+var min     = Data.getMinutes();        // 0-59
+var seg     = Data.getSeconds();        // 0-59
+var mseg    = Data.getMilliseconds();   // 0-999
+var tz      = Data.getTimezoneOffset(); // em minutos
+
+// Formata a Data e a hora (note o mês + 1)
+var str_Data = dia + '/' + (mes+1) + '/' + ano4;
+var str_hora = hora + ':' + min + ':' + seg;
+
+
+
+
   return (
     <Container>
 
@@ -60,7 +83,7 @@ export function Order({ data }: Props) {
                   .doc(data.id)
                   .update({
                     status: 'closed',
-                    created_at: firestore.FieldValue.serverTimestamp()
+                    data_registro: str_Data + 'as' + str_hora
                   })
                   .catch((error) => console.log(error))
               }}
@@ -78,7 +101,7 @@ export function Order({ data }: Props) {
                   .doc(data.id)
                   .update({
                     status: 'open',
-                    created_at[i]: firestore.FieldValue.serverTimestamp()
+                    data_registro: str_Data + '-' + str_hora
                   })
                   .catch((error) => console.log(error))
               }}
