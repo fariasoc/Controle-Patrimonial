@@ -81,13 +81,13 @@ export function Orders() {
     while ( i < equipments.length){
       equipamentos = 
                      '<tr>'+ 
-                     '<td>'+equipments[i].patrimonio+'</td>' + 
-                     '<td>'+equipments[i].observacao+'</td>' + 
-                     '<td>'+equipments[i].lacre+'</td>' + 
-                     '<td>'+equipments[i].responsavelEstoque+'</td>' + 
-                     '<td>'+equipments[i].responsavelOperacao+'</td>' + 
-                     '<td>'+ translateStateFilterPDF(equipments[i].status) +'</td>' + 
-                     '<td>'+equipments[i].data_registro+'</td>' + 
+                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].patrimonio+'</td>' + 
+                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].observacao+'</td>' + 
+                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].lacre+'</td>' + 
+                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].responsavelEstoque+'</td>' + 
+                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].responsavelOperacao+'</td>' + 
+                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+ translateStateFilterPDF(equipments[i].status) +'</td>' + 
+                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].data_registro+'</td>' + 
                      '<td style="color:white">'+equipamentos+'</td>'
                      '</tr>'
 
@@ -123,15 +123,24 @@ var str_hora = hora + ':' + min + ':' + seg;
   <html>
 
   <head>
-  
+
+  <table style="margin-left: 1px">
+      <tr>
+        <td style="font-size: 60px; font-family: Helvetica Neue; font-weight: bold; text-align:left">     
+        Controle de Estoque
+        </td>
+        <td > <img src="https://www.unfe.org/wp-content/uploads/2018/12/LDC.png" style="width: 160px; height:50px"> </td>
+      </tr>
+     
+    </tr>
+
+    </table>
+   
   </head>
   
-  <body style="border: solid; padding: 10px"  >
+  <body style="border: solid blue; padding: 10px"  >
   
 
-    <h1 style="font-size: 60px; font-family: Helvetica Neue; font-weight: bold;">
-      Controle de Estoque <br>
-    </h1>
   
     <h1 style="font-size: 30px; font-family: Helvetica Neue; font-weight: bold;">
       Status da lacração dos equipamentos da LDC
@@ -145,7 +154,8 @@ var str_hora = hora + ':' + min + ':' + seg;
     </p>
   
     <table>
-      <tr style="font-weight: bold">
+      <tr style="background-color: #5d7ee1; font-size: 14px; text-transform: uppercase;
+      letter-spacing: 0.10em; font-weight: bold">
         <td>Equipamento</td>
         <td>Observação</td>
         <td>Nº do Lacre</td>
@@ -161,9 +171,22 @@ var str_hora = hora + ':' + min + ':' + seg;
     </table>
    
     <footer>
-      <p>________________________<br>
-      <b> Responsável - Controle de Estoque </b> </p>
-</footer>
+
+    <table style="margin-left: 30px">
+      <tr>
+        <td> ________________________ </td>
+        <td> ________________________ </td>
+        <td> ________________________ </td>
+      </tr>
+      <tr style="text-align:center">
+      <td> Controle de Estoque </td>
+      <td> Admnistrativo </td>
+      <td> Gerência Industrial </td>
+    </tr>
+
+    </table>
+
+    </footer>
 
   </body>
   </html>
