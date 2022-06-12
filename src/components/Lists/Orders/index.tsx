@@ -126,10 +126,13 @@ var str_hora = hora + ':' + min + ':' + seg;
 
   <table style="margin-left: 1px">
       <tr>
-        <td style="font-size: 60px; font-family: Helvetica Neue; font-weight: bold; text-align:left">     
-        Controle de Estoque
-        </td>
-        <td > <img src="https://www.unfe.org/wp-content/uploads/2018/12/LDC.png" style="width: 160px; height:50px"> </td>
+
+      <td > <img src="https://www.unfe.org/wp-content/uploads/2018/12/LDC.png" style="width: 160px; height:50px">
+      </td>
+      
+      <td style="font-size: 60px; font-family: Helvetica Neue; font-weight: bold; text-align:left">     
+      Controle de Estoque
+      </td>
       </tr>
      
     </tr>
