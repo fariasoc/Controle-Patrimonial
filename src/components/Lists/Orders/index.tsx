@@ -124,7 +124,7 @@ var str_hora = hora + ':' + min + ':' + seg;
 
   <head>
 
-  <table style="margin-left: 1px">
+  <table>
       <tr>
 
       <td > <img src="https://www.unfe.org/wp-content/uploads/2018/12/LDC.png" style="width: 160px; height:50px">
