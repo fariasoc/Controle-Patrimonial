@@ -78,12 +78,20 @@ var str_hora = hora + ':' + min + ':' + seg;
             <Button
               title="Fechar"
               onPress={() => {
+
+                firestore()
+                .collection('orders')
+                .doc(data.id).collection('mov').add({
+                  Data: new Date()
+                })
+                .catch((error) => console.log(error))
+
                 firestore()
                   .collection('orders')
                   .doc(data.id)
                   .update({
                     status: 'closed',
-                    data_registro: str_Data + 'as' + str_hora
+                    data_registro: str_Data + '-' + str_hora
                   })
                   .catch((error) => console.log(error))
               }}

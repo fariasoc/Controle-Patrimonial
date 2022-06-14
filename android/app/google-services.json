@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "146663934873",
-    "project_id": "helpdesk-84921",
-    "storage_bucket": "helpdesk-84921.appspot.com"
+    "project_number": "750198610658",
+    "project_id": "controlx-3b603",
+    "storage_bucket": "controlx-3b603.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:146663934873:android:9f82eef876bdad2baf6108",
+        "mobilesdk_app_id": "1:750198610658:android:8911c2b9578157fed45cbb",
         "android_client_info": {
-          "package_name": "com.helpdesk"
+          "package_name": "com.controlx.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "146663934873-v4i1edl4m7upfj6dvcpglgpqd78l57dm.apps.googleusercontent.com",
+          "client_id": "750198610658-0s9rfnuie5flrc4secbpha5be35vhrqh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCd1ItR-13fM9xZFATwmuq61ar1OLrarLU"
+          "current_key": "AIzaSyAScq5GKfsm24129IWh1VPZJ4e8-4riKPk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "146663934873-v4i1edl4m7upfj6dvcpglgpqd78l57dm.apps.googleusercontent.com",
+              "client_id": "750198610658-0s9rfnuie5flrc4secbpha5be35vhrqh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

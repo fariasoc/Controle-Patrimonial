@@ -16,6 +16,26 @@ export function OrderForm() {
   const [responsavelEstoque, setResponsavelEstoque] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+    // Obtém a data/hora atual
+var Data = new Date();
+
+// Guarda cada pedaço em uma variável
+var dia     = Data.getDate();           // 1-31
+var dia_sem = Data.getDay();            // 0-6 (zero=domingo)
+var mes     = Data.getMonth();          // 0-11 (zero=janeiro)
+var ano4    = Data.getFullYear();       // 4 dígitos
+var hora    = Data.getHours();          // 0-23
+var min     = Data.getMinutes();        // 0-59
+var seg     = Data.getSeconds();        // 0-59
+var mseg    = Data.getMilliseconds();   // 0-999
+var tz      = Data.getTimezoneOffset(); // em minutos
+
+// Formata a Data e a hora (note o mês + 1)
+var str_Data = dia + '/' + (mes+1) + '/' + ano4;
+var str_hora = hora + ':' + min + ':' + seg;
+
+
+
   function handleNewOrder() {
     setIsLoading(true);
 
@@ -28,7 +48,7 @@ export function OrderForm() {
       responsavelOperacao,
       responsavelEstoque,
       status: 'open',
-      data_registro: firestore.FieldValue.serverTimestamp()
+      data_registro: str_Data + '-' + str_hora
     })
     .then(() => Alert.alert("OK", "Movimentação incluída com sucesso!") )
     .catch((error) => console.log(error))
