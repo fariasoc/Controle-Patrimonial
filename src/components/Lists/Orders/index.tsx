@@ -315,6 +315,4 @@ var str_hora = hora + ':' + min + ':' + seg;
             style={{ flex: 1 }}
           />
       }
-
-
 */
