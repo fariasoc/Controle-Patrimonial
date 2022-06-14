@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "controlx",
-    "slug": "controlx",
+    "name": "controlX",
+    "slug": "controlX",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
   },
-  "name": "controlx"
+  "name": "controlX"
 }
