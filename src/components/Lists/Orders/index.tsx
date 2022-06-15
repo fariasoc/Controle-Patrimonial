@@ -13,6 +13,10 @@ import { Container, Header, Title, Counter } from './styles'
 import * as Print from 'expo-print'
 import { shareAsync } from 'expo-sharing'
 
+
+import { StyleSheet, View, Text } from "react-native"
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel, VictoryPie, VictoryTheme } from "victory-native"
+
 export function Orders() {
   const [status, setStatus] = useState('open');
   const [isLoading, setIsLoading] = useState(false);
@@ -233,9 +237,15 @@ var str_hora = hora + ':' + min + ':' + seg;
     }
   }
 
+  const Data = [
+    { quarter: 'Abertos', earnings: equipments.length,  },
+    { quarter: 'Fechados', earnings: orders.length,  },
+  ]
+
   return (
     <Container>
       <Filters onFilter={setStatus} />
+     
       <Header>
         <Title>{ translateStateFilter(status) }</Title>
         <Counter>          
@@ -244,6 +254,9 @@ var str_hora = hora + ':' + min + ':' + seg;
         
         </Counter>
       </Header>
+  
+
+
 
       {
 
@@ -276,7 +289,41 @@ var str_hora = hora + ':' + min + ':' + seg;
   );
 }
 
+
 /*
+
+
+
+      
+      <VictoryChart width={200} 
+    
+  >
+    <VictoryAxis />
+    <VictoryBar
+      data={Data} x="quarter" y="earnings" 
+
+      labels={({ datum }) => `${datum.earnings}` }
+      style={{ data: { fill: "#f8006c", stroke: "blue",fontSize: 20, strokeWidth: 1, width:40, opacity: 0.9,  }}}
+
+      labelComponent={<VictoryLabel dy={30} /> }
+    />
+  </VictoryChart>      
+
+ 
+  <VictoryPie
+  width={300} height={50}
+ 
+          labels={({ datum }) => `${datum.quarter} ${datum.earnings}`}
+          
+          data={Data}  x="quarter" y="earnings" 
+          colorScale={"qualitative"}
+          cornerRadius={({ datum }) => datum.earnings * 3}
+          
+          style={{ labels: { fill: "black", fontSize: 15, fontWeight: "bold", } }}
+          padding={{ top:20, bottom: 20 }}
+        />
+
+
 {
         isLoading ?
           <Load />
