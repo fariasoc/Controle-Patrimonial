@@ -13,7 +13,6 @@ import { Container, Header, Title, Counter } from './styles'
 import * as Print from 'expo-print'
 import { shareAsync } from 'expo-sharing'
 
-
 import { StyleSheet, View, Text } from "react-native"
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel, VictoryPie, VictoryTheme } from "victory-native"
 
@@ -289,12 +288,8 @@ var str_hora = hora + ':' + min + ':' + seg;
   );
 }
 
-
 /*
-
-
-
-      
+     
       <VictoryChart width={200} 
     
   >
