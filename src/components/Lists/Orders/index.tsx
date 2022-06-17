@@ -289,7 +289,6 @@ var str_hora = hora + ':' + min + ':' + seg;
 }
 
 /*
-     
       <VictoryChart width={200} 
     
   >
