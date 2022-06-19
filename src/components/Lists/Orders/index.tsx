@@ -253,9 +253,6 @@ var str_hora = hora + ':' + min + ':' + seg;
         
         </Counter>
       </Header>
-  
-
-
 
       {
 
