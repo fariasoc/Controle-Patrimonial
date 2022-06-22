@@ -146,8 +146,6 @@ var str_hora = hora + ':' + min + ':' + seg;
   
   <body style="border: solid blue; padding: 10px"  >
   
-
-  
     <h1 style="font-size: 30px; font-family: Helvetica Neue; font-weight: bold;">
       Status da lacração dos equipamentos da LDC
     </h1>
@@ -170,10 +168,7 @@ var str_hora = hora + ':' + min + ':' + seg;
         <td>Status</td>
         <td>Data e Hora do Registro</td>
       </tr>
-  
-      ${stringHTML}
-  
-  
+        ${stringHTML}  
     </table>
    
     <footer>
