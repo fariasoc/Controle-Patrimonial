@@ -253,7 +253,7 @@ var str_hora = hora + ':' + min + ':' + seg;
         
         </Counter>
       </Header>
-
+ 
       {
 
         filtroAtivo ?
@@ -300,7 +300,6 @@ var str_hora = hora + ':' + min + ':' + seg;
     />
   </VictoryChart>      
 
- 
   <VictoryPie
   width={300} height={50}
  
@@ -313,7 +312,6 @@ var str_hora = hora + ':' + min + ':' + seg;
           style={{ labels: { fill: "black", fontSize: 15, fontWeight: "bold", } }}
           padding={{ top:20, bottom: 20 }}
         />
-
 
 {
         isLoading ?
@@ -330,7 +328,6 @@ var str_hora = hora + ':' + min + ':' + seg;
 */
 
 /*
-
 
       {
         
