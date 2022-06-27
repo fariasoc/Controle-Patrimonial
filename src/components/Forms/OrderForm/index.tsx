@@ -56,7 +56,7 @@ var str_hora = hora + ':' + min + ':' + seg;
   return ( 
     <Form>
 
-      <Title>Nova movimentação</Title>
+      <Title>Nova movimentação </Title>
 
       <Input placeholder="Equipamento" onChangeText={setPatrimonio} />
       <Input placeholder="Nº do Lacre" onChangeText={setLacre} />
