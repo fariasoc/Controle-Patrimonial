@@ -34,7 +34,7 @@ var tz      = Data.getTimezoneOffset(); // em minutos
 var str_Data = dia + '/' + (mes+1) + '/' + ano4;
 var str_hora = hora + ':' + min + ':' + seg;
 
-  function handleNewOrder() {
+  function handleNewEquipment() {
     setIsLoading(true);
 
     firestore()
@@ -64,7 +64,7 @@ var str_hora = hora + ':' + min + ':' + seg;
       <Input placeholder="Responsável do Controle de Estoque" onChangeText={setResponsavelEstoque} />
       <Input placeholder="Observações" onChangeText={setObservacao} />
 
-      <Button title="Enviar" isLoading={isLoading} onPress={handleNewOrder} />
+      <Button title="Enviar" isLoading={isLoading} onPress={handleNewEquipment} />
         
     </Form>
   );
