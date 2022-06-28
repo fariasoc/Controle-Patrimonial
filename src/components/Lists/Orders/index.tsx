@@ -281,8 +281,7 @@ var str_hora = hora + ':' + min + ':' + seg;
 }
 
 /*
-      <VictoryChart width={200} 
-    
+      <VictoryChart width={200}     
   >
     <VictoryAxis />
     <VictoryBar
