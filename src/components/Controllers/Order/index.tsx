@@ -62,9 +62,6 @@ var tz      = Data.getTimezoneOffset(); // em minutos
 var str_Data = dia + '/' + (mes+1) + '/' + ano4;
 var str_hora = hora + ':' + min + ':' + seg;
 
-
-
-
   return (
     <Container>
 
