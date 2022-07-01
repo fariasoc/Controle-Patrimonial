@@ -23,8 +23,6 @@ export function Graficos() {
       <VictoryChart width={350} theme={VictoryTheme.material}>
         <VictoryBar data={data} x="quarter" y="earnings" />
       </VictoryChart>
-
-
       <BackButton onPress={() => navigation.navigate('home')}>
         <MaterialIcons name="arrow-back" size={24} color={theme.COLORS.PRIMARY} />
         <BackText>Eu já tenho uma conta</BackText>
