@@ -10,7 +10,7 @@ const data = [
   { quarter: 'Refinaria', earnings: 4 },
   { quarter: 'Lecitina', earnings: 7 },
   { quarter: 'Degomado', earnings: 4 },
-  { quarter: 'Goma e Borra', earnings: 2 }
+  { quarter: 'Goma', earnings: 2 }
 ]
 
 export function Graficos() {
