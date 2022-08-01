@@ -79,20 +79,25 @@ export function Orders() {
   }, [status]);
 
   function createPDF(){
-    let i = 0; 
+    let i = 0
+    let tableRowInitial = '<tr>'
+    let tableDataInitial = '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'
+    let tableRowEnd = '</tr>'
+    let tableDataEnd = '</td>'
+    let tableDataNull = '<td style="color:white">'
 
     while ( i < equipments.length){
       equipamentos = 
-                     '<tr>'+ 
-                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].patrimonio+'</td>' + 
-                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].observacao+'</td>' + 
-                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].lacre+'</td>' + 
-                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].responsavelEstoque+'</td>' + 
-                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].responsavelOperacao+'</td>' + 
-                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+ translateStateFilterPDF(equipments[i].status) +'</td>' + 
-                     '<td style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);" >'+equipments[i].data_registro+'</td>' + 
-                     '<td style="color:white">'+equipamentos+'</td>'
-                     '</tr>'
+                     tableRowInitial+ 
+                     tableDataInitial +equipments[i].patrimonio+tableDataEnd + 
+                     tableDataInitial +equipments[i].observacao+tableDataEnd + 
+                     tableDataInitial +equipments[i].lacre+tableDataEnd + 
+                     tableDataInitial +equipments[i].responsavelEstoque+tableDataEnd + 
+                     tableDataInitial +equipments[i].responsavelOperacao+tableDataEnd + 
+                     tableDataInitial + translateStateFilterPDF(equipments[i].status) +tableDataEnd + 
+                     tableDataInitial +equipments[i].data_registro+tableDataEnd + 
+                     tableDataNull+equipamentos+tableDataEnd
+                     tableRowEnd
 
                      i++
     }
