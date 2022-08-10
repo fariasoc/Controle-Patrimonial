@@ -28,9 +28,7 @@ export function Orders() {
   var filtroAtivo = null;
 
   if (status === 'Todos') {
-    filtroAtivo = 'Todos'
-
-  
+    filtroAtivo = 'Todos'  
   }
 
   useEffect(() => {
@@ -89,6 +87,7 @@ export function Orders() {
     while ( i < equipments.length){
       equipamentos = 
                      tableRowInitial+ 
+
                      tableDataInitial +equipments[i].patrimonio+tableDataEnd + 
                      tableDataInitial +equipments[i].observacao+tableDataEnd + 
                      tableDataInitial +equipments[i].lacre+tableDataEnd + 
@@ -97,6 +96,7 @@ export function Orders() {
                      tableDataInitial + translateStateFilterPDF(equipments[i].status) +tableDataEnd + 
                      tableDataInitial +equipments[i].data_registro+tableDataEnd + 
                      tableDataNull+equipamentos+tableDataEnd
+
                      tableRowEnd
 
                      i++
@@ -126,6 +126,7 @@ var str_hora = hora + ':' + min + ':' + seg;
 
 // Mostra o resultado
 //alert('Hoje é ' + str_data + ' às ' + str_hora);
+//"https://www.unfe.org/wp-content/uploads/2018/12/LDC.png"
 
   const html = `
   <html>
@@ -135,11 +136,11 @@ var str_hora = hora + ':' + min + ':' + seg;
   <table>
       <tr>
 
-      <td > <img src="https://www.unfe.org/wp-content/uploads/2018/12/LDC.png" style="width: 160px; height:50px">
+      <td > <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Stylised_atom_with_three_Bohr_model_orbits_and_stylised_nucleus.png/250px-Stylised_atom_with_three_Bohr_model_orbits_and_stylised_nucleus.png" style="widht: 100px; height: 100px"  >
       </td>
       
       <td style="font-size: 60px; font-family: Helvetica Neue; font-weight: bold; text-align:left">     
-      Controle de Estoque
+      Control X
       </td>
       </tr>
      
