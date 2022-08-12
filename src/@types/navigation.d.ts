@@ -12,6 +12,8 @@ export declare global {
       home: undefined;
       signIn: undefined;
       register: undefined;
+      new: undefined;
+      details: { orderId: string };
       graficos: undefined;
     }
   }
